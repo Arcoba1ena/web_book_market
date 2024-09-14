@@ -1,0 +1,152 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="${page}"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <style>
+        main {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+            .btn-group {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+        }
+            .btn {
+            flex: 1;
+            max-width:
+            border-radius: 15px;
+        }
+    }
+
+    </style>
+</head>
+<body>
+<header th:insert="base/header :: header"></header>
+<main>
+    <div class="container mt-4 p-4 mb-4 rounded text-body-emphasis bg-body-secondary">
+        <div class="col-lg-10 px-0">
+            <p class="lead my-3">Читайте и узнавайте вместе со всем миром
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-book"
+                     viewBox="0 0 16 16">
+                    <path d="M1 2.828c.885-.37 2.154-.769 3.388-.893 1.33-.134 2.458.063 3.112.752v9.746c-.935-.53-2.12-.603-3.213-.493-1.18.12-2.37.461-3.287.811zm7.5-.141c.654-.689 1.782-.886 3.112-.752 1.234.124 2.503.523 3.388.893v9.923c-.918-.35-2.107-.692-3.287-.81-1.094-.111-2.278-.039-3.213.492zM8 1.783C7.015.936 5.587.81 4.287.94c-1.514.153-3.042.672-3.994 1.105A.5.5 0 0 0 0 2.5v11a.5.5 0 0 0 .707.455c.882-.4 2.303-.881 3.68-1.02 1.409-.142 2.59.087 3.223.877a.5.5 0 0 0 .78 0c.633-.79 1.814-1.019 3.222-.877 1.378.139 2.8.62 3.681 1.02A.5.5 0 0 0 16 13.5v-11a.5.5 0 0 0-.293-.455c-.952-.433-2.48-.952-3.994-1.105C10.413.809 8.985.936 8 1.783"/>
+                </svg>
+            </p>
+            <p class="lead mb-0"><a href="/myBooks" class="btn btn-primary">Мои книги
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                     class="bi bi-arrow-right-circle" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd"
+                          d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0M4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5z"/>
+                </svg>
+            </a>
+            </p>
+            <br>
+            <p class="lead mb-0"><a href="/allBooks" class="btn btn-primary">Библиотека
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                     class="bi bi-arrow-right-circle" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd"
+                          d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0M4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5z"/>
+                </svg>
+            </a>
+            </p>
+            <br>
+        </div>
+    </div>
+</main>
+<div class="container">
+    <div class="p-3 pb-md-4 mx-auto text-center">
+        <h5 class="display-4 text-body-emphasis">Присоединяйтесь к сообществу</h5>
+        <p class="fs-5 text-body-secondary">Бестселлеры</p>
+    </div>
+
+    <div class="row mt-1 d-flex flex-column align-items-center">
+        <div class="col-md-6 mb-4">
+            <div class="h-100 p-3 bg-body-tertiary border rounded-3 d-flex flex-column align-items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor"
+                     class="bi bi-journal-album" viewBox="0 0 16 16">
+                    <path d="M5.5 4a.5.5 0 0 0-.5.5v5a.5.5 0 0 0 .5.5h5a.5.5 0 0 0 .5-.5v-5a.5.5 0 0 0-.5-.5zm1 7a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1z"/>
+                    <path d="M3 0h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-1h1v1a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v1H1V2a2 2 0 0 1 2-2"/>
+                    <path d="M1 5v-.5a.5.5 0 0 1 1 0V5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1zm0 3v-.5a.5.5 0 0 1 1 0V8h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1zm0 3v-.5a.5.5 0 0 1 1 0v.5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1z"/>
+                </svg>
+                <h3>«Горе от ума»</h3>
+                <p>Остроумная, лёгкая, виртуозно сочетающая смешное с грустным, эта стихотворная комедия повествует об
+                    инициативном и честном молодом человеке, который наведывается в имение к старым знакомым после
+                    продолжительной учёбы в Европе. Героя раздражает лицемерие и праздность московской тусовки, но в
+                    доме живёт любовь его юности, с которой он долгое время был разлучён и теперь снова желает сойтись.
+                    Но девушку не привлекает интеллект, искренность и дерзость парня по отношению к устоям, она «вросла»
+                    в светское общество и не желает расставаться с его блеском и пороками…</p><br>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-1 d-flex flex-column align-items-center">
+        <div class="col-md-6 mb-4">
+            <div class="h-100 p-3 bg-body-tertiary border rounded-3 d-flex flex-column align-items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor"
+                     class="bi bi-journal-album" viewBox="0 0 16 16">
+                    <path d="M5.5 4a.5.5 0 0 0-.5.5v5a.5.5 0 0 0 .5.5h5a.5.5 0 0 0 .5-.5v-5a.5.5 0 0 0-.5-.5zm1 7a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1z"/>
+                    <path d="M3 0h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-1h1v1a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v1H1V2a2 2 0 0 1 2-2"/>
+                    <path d="M1 5v-.5a.5.5 0 0 1 1 0V5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1zm0 3v-.5a.5.5 0 0 1 1 0V8h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1zm0 3v-.5a.5.5 0 0 1 1 0v.5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1z"/>
+                </svg>
+                <h3>«Ревизор»</h3>
+                <p>Прокутивший всё состояние дворянин, у которого от блеска прошлой жизни остались только дорогие
+                    шмотки, приезжает в сонный провинциальной городок. Там местные чиновники и простые жители принимают
+                    парня за большую государственную шишку, ответственную за проверку состояния дел в городе
+                    («ревизора»), и начинают всячески его задабривать…</p><br>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-1 d-flex flex-column align-items-center">
+        <div class="col-md-6 mb-4">
+            <div class="h-100 p-3 bg-body-tertiary border rounded-3 d-flex flex-column align-items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor"
+                     class="bi bi-journal-album" viewBox="0 0 16 16">
+                    <path d="M5.5 4a.5.5 0 0 0-.5.5v5a.5.5 0 0 0 .5.5h5a.5.5 0 0 0 .5-.5v-5a.5.5 0 0 0-.5-.5zm1 7a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1z"/>
+                    <path d="M3 0h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-1h1v1a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v1H1V2a2 2 0 0 1 2-2"/>
+                    <path d="M1 5v-.5a.5.5 0 0 1 1 0V5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1zm0 3v-.5a.5.5 0 0 1 1 0V8h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1zm0 3v-.5a.5.5 0 0 1 1 0v.5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1z"/>
+                </svg>
+                <h3>«Капитанская дочка»</h3>
+                <p>Первый бабник Петербурга, светский тусовщик, любитель шампанского, крепкого словца и дуэлей -
+                    вспоминая про «Наше всё», в голове у обывателя наверняка возникает образ этакой рокзвезды,
+                    гениального распиздяя, которому всё давалось легко и непринуждённо, этакого Марадоны от мира русской
+                    классики. Но гораздо меньше людей знают о другой стороне личности великого писателя: Пушкин был
+                    историческим гиком, скрупулёзно изучавшим тысячи архивных документов, чтобы составить своё
+                    представление о минувшей эпохе и выполнить поставленные перед собой творческие задачи. А во время
+                    работы над «Капитанской дочкой» он отправился на южный Урал (нехуёвая поездочка для начала XIX века
+                    !), дабы лично пообщаться со свидетелями исторических события, увидеть и почувствовать среду, в
+                    которой жили люди и подготовить материал для, пожалуй, главного шедевра в своей литературной
+                    карьере.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-1 d-flex flex-column align-items-center">
+        <div class="col-md-6 mb-4">
+            <div class="h-100 p-3 bg-body-tertiary border rounded-3 d-flex flex-column align-items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor"
+                     class="bi bi-journal-album" viewBox="0 0 16 16">
+                    <path d="M5.5 4a.5.5 0 0 0-.5.5v5a.5.5 0 0 0 .5.5h5a.5.5 0 0 0 .5-.5v-5a.5.5 0 0 0-.5-.5zm1 7a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1z"/>
+                    <path d="M3 0h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-1h1v1a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v1H1V2a2 2 0 0 1 2-2"/>
+                    <path d="M1 5v-.5a.5.5 0 0 1 1 0V5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1zm0 3v-.5a.5.5 0 0 1 1 0V8h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1zm0 3v-.5a.5.5 0 0 1 1 0v.5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1z"/>
+                </svg>
+                <h3>«Герой нашего времени»</h3>
+                <p>Сюжет этой книги пересказать довольно непросто. Она представляет из себя деконструкцию романтической
+                    приключенческой повести и обладает передовой для своего времени структурой: нелинейностью,
+                    бессвязностью глав, сочетанием авторского повествования и «POV»-дневников от первого лица. Главный
+                    герой на страницах произведения даже «встречается» с самим Лермонтовым ! Интеллигентный, но циничный
+                    прапорщик Печорин по долгу службы и в поиске острых ощущений оказывается в разных живописных местах
+                    на юге России, но везде чувствует лишь тоску и бессмысленность своего существования…</p>
+            </div>
+        </div>
+    </div>
+
+</div>
+<footer class="py-2 text-center text-body-secondary">
+    <div th:insert="base/footer :: footer"></div>
+</footer>
+</body>
+</html>

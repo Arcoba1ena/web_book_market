@@ -1,0 +1,245 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="${page}"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <style>
+        main {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+            .btn-group {
+            display: flex;
+            gap: 10px; /* Отступ между кнопками */
+            justify-content: center; /* Выравнивание по центру */
+        }
+            .btn {
+            flex: 1; /* Чтобы кнопки занимали одинаковое пространство */
+            max-width: 200px; /* Максимальная ширина кнопок */
+        }
+            .long-text {
+            max-width: 80%;
+            overflow-wrap: break-word;
+    }
+}
+    </style>
+</head>
+<body>
+<header th:insert="base/header :: header"></header>
+
+<div class="blog-blocks p-3 pb-md-4 mx-auto text-center">
+    <h1 class="display-4 text-body-emphasis">Библиотека</h1>
+    <div class="btn-group">
+        <a href="/myBooks" class="btn btn-primary btn-sm">
+            Мои книги
+            <svg xmlns="http://www.w3.org/2000/svg" width="10" height="20" fill="currentColor" class="bi bi-bookmarks"
+                 viewBox="0 0 16 16">
+                <path d="M2 4a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v11.5a.5.5 0 0 1-.777.416L7 13.101l-4.223 2.815A.5.5 0 0 1 2 15.5zm2-1a1 1 0 0 0-1 1v10.566l3.723-2.482a.5.5 0 0 1 .554 0L11 14.566V4a1 1 0 0 0-1-1z"/>
+                <path d="M4.268 1H12a1 1 0 0 1 1 1v11.768l.223.148A.5.5 0 0 0 14 13.5V2a2 2 0 0 0-2-2H6a2 2 0 0 0-1.732 1"/>
+            </svg>
+        </a>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row mt-1 d-flex flex-column align-items-center">
+        <div th:each="el : ${books}" class="col-md-6 mb-4">
+            <div class="h-100 p-3 bg-body-tertiary border rounded-3 d-flex flex-column align-items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-book"
+                     viewBox="0 0 16 16">
+                    <path d="M1 2.828c.885-.37 2.154-.769 3.388-.893 1.33-.134 2.458.063 3.112.752v9.746c-.935-.53-2.12-.603-3.213-.493-1.18.12-2.37.461-3.287.811zm7.5-.141c.654-.689 1.782-.886 3.112-.752 1.234.124 2.503.523 3.388.893v9.923c-.918-.35-2.107-.692-3.287-.81-1.094-.111-2.278-.039-3.213.492zM8 1.783C7.015.936 5.587.81 4.287.94c-1.514.153-3.042.672-3.994 1.105A.5.5 0 0 0 0 2.5v11a.5.5 0 0 0 .707.455c.882-.4 2.303-.881 3.68-1.02 1.409-.142 2.59.087 3.223.877a.5.5 0 0 0 .78 0c.633-.79 1.814-1.019 3.222-.877 1.378.139 2.8.62 3.681 1.02A.5.5 0 0 0 16 13.5v-11a.5.5 0 0 0-.293-.455c-.952-.433-2.48-.952-3.994-1.105C10.413.809 8.985.936 8 1.783"/>
+                </svg>
+                <h3 th:text="${el.title}"></h3>
+                <p><strong>Год выпуска:</strong><span th:text="${el.years} + ' г.'"></span></p>
+                <p><strong>Автор:</strong><span th:text="${el.author}"></span></p>
+                <p><strong>Категория:</strong><span th:text="${el.category}"></span></p>
+                <p><strong>Описание:</strong><span th:text="${el.descriptions}"></span></p>
+                <p><strong>Цена:</strong><span th:text="${el.price} + ' руб.'"></span></p>
+                <form method="post" action="/inBasket">
+                    <input type="hidden" name="userLogin" th:value="${el.author}"/>
+                    <button type="submit" class="btn btn-primary btn-sm">Читать
+                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor"
+                             class="bi bi-bookmark-check-fill" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd"
+                                  d="M2 15.5V2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.74.439L8 13.069l-5.26 2.87A.5.5 0 0 1 2 15.5m8.854-9.646a.5.5 0 0 0-.708-.708L7.5 7.793 6.354 6.646a.5.5 0 1 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0z"/>
+                        </svg>
+                    </button>
+                </form>
+                <br>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-1 d-flex flex-column align-items-center">
+    <div class="col-md-6 mb-4">
+        <div class="h-100 p-3 bg-body-tertiary border rounded-3 d-flex flex-column align-items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-book"
+                 viewBox="0 0 16 16">
+                <path d="M1 2.828c.885-.37 2.154-.769 3.388-.893 1.33-.134 2.458.063 3.112.752v9.746c-.935-.53-2.12-.603-3.213-.493-1.18.12-2.37.461-3.287.811zm7.5-.141c.654-.689 1.782-.886 3.112-.752 1.234.124 2.503.523 3.388.893v9.923c-.918-.35-2.107-.692-3.287-.81-1.094-.111-2.278-.039-3.213.492zM8 1.783C7.015.936 5.587.81 4.287.94c-1.514.153-3.042.672-3.994 1.105A.5.5 0 0 0 0 2.5v11a.5.5 0 0 0 .707.455c.882-.4 2.303-.881 3.68-1.02 1.409-.142 2.59.087 3.223.877a.5.5 0 0 0 .78 0c.633-.79 1.814-1.019 3.222-.877 1.378.139 2.8.62 3.681 1.02A.5.5 0 0 0 16 13.5v-11a.5.5 0 0 0-.293-.455c-.952-.433-2.48-.952-3.994-1.105C10.413.809 8.985.936 8 1.783"/>
+            </svg>
+            <h3>«Горе от ума»</h3>
+            <p><strong>Год выпуска:</strong>1825</p>
+            <p><strong>Автор:</strong>Александр Грибоедов</p>
+            <p><strong>Категория:</strong>Комедия</p>
+            <p><strong>Описание:</strong></p>
+            <p class="long-text">Остроумная, лёгкая, виртуозно сочетающая смешное с грустным, эта стихотворная комедия повествует об
+                инициативном и честном молодом человеке, который наведывается в имение к старым знакомым после
+                продолжительной учёбы в Европе. Героя раздражает лицемерие и праздность московской тусовки, но в
+                доме живёт любовь его юности, с которой он долгое время был разлучён и теперь снова желает сойтись.
+                Но девушку не привлекает интеллект, искренность и дерзость парня по отношению к устоям, она «вросла»
+                в светское общество и не желает расставаться с его блеском и пороками…</p><br>
+            <p><strong>Цена:</strong>999 р.</p>
+            <form method="post" action="/inBasket">
+                <input type="hidden" name="userLogin" value="Александр Грибоедов"/>
+                <button type="submit" class="btn btn-primary btn-sm">Читать
+                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor"
+                         class="bi bi-bookmark-check-fill" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd"
+                              d="M2 15.5V2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.74.439L8 13.069l-5.26 2.87A.5.5 0 0 1 2 15.5m8.854-9.646a.5.5 0 0 0-.708-.708L7.5 7.793 6.354 6.646a.5.5 0 1 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0z"/>
+                    </svg>
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-1 d-flex flex-column align-items-center">
+    <div class="col-md-6 mb-4">
+        <div class="h-100 p-3 bg-body-tertiary border rounded-3 d-flex flex-column align-items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-book"
+                 viewBox="0 0 16 16">
+                <path d="M1 2.828c.885-.37 2.154-.769 3.388-.893 1.33-.134 2.458.063 3.112.752v9.746c-.935-.53-2.12-.603-3.213-.493-1.18.12-2.37.461-3.287.811zm7.5-.141c.654-.689 1.782-.886 3.112-.752 1.234.124 2.503.523 3.388.893v9.923c-.918-.35-2.107-.692-3.287-.81-1.094-.111-2.278-.039-3.213.492zM8 1.783C7.015.936 5.587.81 4.287.94c-1.514.153-3.042.672-3.994 1.105A.5.5 0 0 0 0 2.5v11a.5.5 0 0 0 .707.455c.882-.4 2.303-.881 3.68-1.02 1.409-.142 2.59.087 3.223.877a.5.5 0 0 0 .78 0c.633-.79 1.814-1.019 3.222-.877 1.378.139 2.8.62 3.681 1.02A.5.5 0 0 0 16 13.5v-11a.5.5 0 0 0-.293-.455c-.952-.433-2.48-.952-3.994-1.105C10.413.809 8.985.936 8 1.783"/>
+            </svg>
+            <h3>«Ревизор»</h3>
+            <p><strong>Год выпуска:</strong>1836</p>
+            <p><strong>Автор:</strong>Николай Гоголь</p>
+            <p><strong>Категория:</strong>Комедия</p>
+            <p><strong>Описание:</strong></p>
+            <p class="long-text">Прокутивший всё состояние дворянин, у которого от блеска прошлой жизни остались только дорогие шмотки,
+                приезжает в сонный провинциальной городок. Там местные чиновники и простые жители принимают парня за
+                большую государственную шишку, ответственную за проверку состояния дел в городе («ревизора»), и начинают
+                всячески его задабривать…</p><br>
+            <p><strong>Цена:</strong>999 р.</p>
+            <form method="post" action="/inBasket">
+                <input type="hidden" name="userLogin" value="Николай Гоголь"/>
+                <button type="submit" class="btn btn-primary btn-sm">Читать
+                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor"
+                         class="bi bi-bookmark-check-fill" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd"
+                              d="M2 15.5V2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.74.439L8 13.069l-5.26 2.87A.5.5 0 0 1 2 15.5m8.854-9.646a.5.5 0 0 0-.708-.708L7.5 7.793 6.354 6.646a.5.5 0 1 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0z"/>
+                    </svg>
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-1 d-flex flex-column align-items-center">
+    <div class="col-md-6 mb-4">
+        <div class="h-100 p-3 bg-body-tertiary border rounded-3 d-flex flex-column align-items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-book"
+                 viewBox="0 0 16 16">
+                <path d="M1 2.828c.885-.37 2.154-.769 3.388-.893 1.33-.134 2.458.063 3.112.752v9.746c-.935-.53-2.12-.603-3.213-.493-1.18.12-2.37.461-3.287.811zm7.5-.141c.654-.689 1.782-.886 3.112-.752 1.234.124 2.503.523 3.388.893v9.923c-.918-.35-2.107-.692-3.287-.81-1.094-.111-2.278-.039-3.213.492zM8 1.783C7.015.936 5.587.81 4.287.94c-1.514.153-3.042.672-3.994 1.105A.5.5 0 0 0 0 2.5v11a.5.5 0 0 0 .707.455c.882-.4 2.303-.881 3.68-1.02 1.409-.142 2.59.087 3.223.877a.5.5 0 0 0 .78 0c.633-.79 1.814-1.019 3.222-.877 1.378.139 2.8.62 3.681 1.02A.5.5 0 0 0 16 13.5v-11a.5.5 0 0 0-.293-.455c-.952-.433-2.48-.952-3.994-1.105C10.413.809 8.985.936 8 1.783"/>
+            </svg>
+            <h3>«Капитанская дочка»</h3>
+            <p><strong>Год выпуска:</strong>1836</p>
+            <p><strong>Автор:</strong>Александр Пушкин</p>
+            <p><strong>Категория:</strong>Роман</p>
+            <p><strong>Описание:</strong></p>
+            <p class="long-text">Первый бабник Петербурга, светский тусовщик, любитель шампанского, крепкого словца и дуэлей -
+            <br>вспоминая про «Наше всё», в голове у обывателя наверняка возникает образ этакой рокзвезды,
+            гениального распиздяя, которому всё давалось легко и непринуждённо, этакого Марадоны от мира русской
+            классики. Но гораздо меньше людей знают о другой стороне личности великого писателя: Пушкин был
+            историческим гиком, скрупулёзно изучавшим тысячи архивных документов, чтобы составить своё
+            представление о минувшей эпохе и выполнить поставленные перед собой творческие задачи. А во время
+            работы над «Капитанской дочкой» он отправился на южный Урал (нехуёвая поездочка для начала XIX века
+            !), дабы лично пообщаться со свидетелями исторических события, увидеть и почувствовать среду, в
+            которой жили люди и подготовить материал для, пожалуй, главного шедевра в своей литературной
+            карьере.</p><br>
+            <p><strong>Цена:</strong>999 р.</p>
+            <form method="post" action="/inBasket">
+                <input type="hidden" name="userLogin" value="Александр Пушкин"/>
+                <button type="submit" class="btn btn-primary btn-sm">Читать
+                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor"
+                         class="bi bi-bookmark-check-fill" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd"
+                              d="M2 15.5V2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.74.439L8 13.069l-5.26 2.87A.5.5 0 0 1 2 15.5m8.854-9.646a.5.5 0 0 0-.708-.708L7.5 7.793 6.354 6.646a.5.5 0 1 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0z"/>
+                    </svg>
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-1 d-flex flex-column align-items-center">
+    <div class="col-md-6 mb-4">
+        <div class="h-100 p-3 bg-body-tertiary border rounded-3 d-flex flex-column align-items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-book"
+                 viewBox="0 0 16 16">
+                <path d="M1 2.828c.885-.37 2.154-.769 3.388-.893 1.33-.134 2.458.063 3.112.752v9.746c-.935-.53-2.12-.603-3.213-.493-1.18.12-2.37.461-3.287.811zm7.5-.141c.654-.689 1.782-.886 3.112-.752 1.234.124 2.503.523 3.388.893v9.923c-.918-.35-2.107-.692-3.287-.81-1.094-.111-2.278-.039-3.213.492zM8 1.783C7.015.936 5.587.81 4.287.94c-1.514.153-3.042.672-3.994 1.105A.5.5 0 0 0 0 2.5v11a.5.5 0 0 0 .707.455c.882-.4 2.303-.881 3.68-1.02 1.409-.142 2.59.087 3.223.877a.5.5 0 0 0 .78 0c.633-.79 1.814-1.019 3.222-.877 1.378.139 2.8.62 3.681 1.02A.5.5 0 0 0 16 13.5v-11a.5.5 0 0 0-.293-.455c-.952-.433-2.48-.952-3.994-1.105C10.413.809 8.985.936 8 1.783"/>
+            </svg>
+            <h3>«Герой нашего времени»</h3>
+            <p><strong>Год выпуска:</strong>1840</p>
+            <p><strong>Автор:</strong>Михаил Лермонтов</p>
+            <p><strong>Категория:</strong>Роман</p>
+            <p><strong>Описание:</strong></p>
+            <p class="long-text">Сюжет этой книги пересказать довольно непросто. Она представляет из себя деконструкцию романтической
+                приключенческой повести и обладает передовой для своего времени структурой: нелинейностью,
+                бессвязностью глав, сочетанием авторского повествования и «POV»-дневников от первого лица. Главный
+                герой на страницах произведения даже «встречается» с самим Лермонтовым ! Интеллигентный, но циничный
+                прапорщик Печорин по долгу службы и в поиске острых ощущений оказывается в разных живописных местах
+                на юге России, но везде чувствует лишь тоску и бессмысленность своего существования…</p><br>
+            <p><strong>Цена:</strong>999 р.</p>
+            <form method="post" action="/inBasket">
+                <input type="hidden" name="userLogin" value="Михаил Лермонтов"/>
+                <button type="submit" class="btn btn-primary btn-sm">Читать
+                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor"
+                         class="bi bi-bookmark-check-fill" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd"
+                              d="M2 15.5V2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.74.439L8 13.069l-5.26 2.87A.5.5 0 0 1 2 15.5m8.854-9.646a.5.5 0 0 0-.708-.708L7.5 7.793 6.354 6.646a.5.5 0 1 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0z"/>
+                    </svg>
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-1 d-flex flex-column align-items-center">
+    <div class="col-md-6 mb-4">
+        <div class="h-100 p-3 bg-body-tertiary border rounded-3 d-flex flex-column align-items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-book"
+                 viewBox="0 0 16 16">
+                <path d="M1 2.828c.885-.37 2.154-.769 3.388-.893 1.33-.134 2.458.063 3.112.752v9.746c-.935-.53-2.12-.603-3.213-.493-1.18.12-2.37.461-3.287.811zm7.5-.141c.654-.689 1.782-.886 3.112-.752 1.234.124 2.503.523 3.388.893v9.923c-.918-.35-2.107-.692-3.287-.81-1.094-.111-2.278-.039-3.213.492zM8 1.783C7.015.936 5.587.81 4.287.94c-1.514.153-3.042.672-3.994 1.105A.5.5 0 0 0 0 2.5v11a.5.5 0 0 0 .707.455c.882-.4 2.303-.881 3.68-1.02 1.409-.142 2.59.087 3.223.877a.5.5 0 0 0 .78 0c.633-.79 1.814-1.019 3.222-.877 1.378.139 2.8.62 3.681 1.02A.5.5 0 0 0 16 13.5v-11a.5.5 0 0 0-.293-.455c-.952-.433-2.48-.952-3.994-1.105C10.413.809 8.985.936 8 1.783"/>
+            </svg>
+            <h3>«Обломов»</h3>
+            <p><strong>Год выпуска:</strong>1859</p>
+            <p><strong>Автор:</strong>Иван Гончаров</p>
+            <p><strong>Категория:</strong>Роман</p>
+            <p><strong>Описание:</strong></p>
+            <p class="long-text">Лермонтовский образ Печорина был отнюдь не единственным вариантом «лишнего человека» в русской классике.
+                Если его циничный офицер ещё пытался вести со своей судьбой торг, то персонаж, созданный писателем и
+                литературным критиком Иваном Гончаровым в своём главном произведении, встречает читателя на стадии
+                «принятия».</p><br>
+            <p><strong>Цена:</strong>999 р.</p>
+            <form method="post" action="/inBasket">
+                <input type="hidden" name="userLogin" value="Иван Гончаров"/>
+                <button type="submit" class="btn btn-primary btn-sm">Читать
+                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor"
+                         class="bi bi-bookmark-check-fill" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd"
+                              d="M2 15.5V2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.74.439L8 13.069l-5.26 2.87A.5.5 0 0 1 2 15.5m8.854-9.646a.5.5 0 0 0-.708-.708L7.5 7.793 6.354 6.646a.5.5 0 1 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0z"/>
+                    </svg>
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<footer class="py-2 text-center text-body-secondary">
+    <div th:insert="base/footer :: footer"></div>
+</footer>
+</body>
+</html>

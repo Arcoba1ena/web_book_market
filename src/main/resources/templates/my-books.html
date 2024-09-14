@@ -1,0 +1,229 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="${page}"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <style>
+            main {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+            .btn-group {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+        }
+            .btn {
+            flex: 1;
+            max-width: 200px;
+            border-radius: 15px;
+        }
+    </style>
+</head>
+<body>
+<header th:insert="base/header :: header"></header>
+
+<div class="blog-blocks p-3 pb-md-4 mx-auto text-center">
+    <h1 class="display-4 text-body-emphasis">Мои книги</h1>
+</div>
+
+<div class="container">
+    <div class="row mt-3 d-flex justify-content-center">
+        <div class="col-md-4 mb-4 d-flex justify-content-center gap-2">
+            <p>Сортировка по автору</p>
+            <a href="/author/sort" style="text-decoration: none;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                     class="bi bi-arrow-up-short" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd"
+                          d="M8 12a.5.5 0 0 0 .5-.5V5.707l2.146 2.147a.5.5 0 0 0 .708-.708l-3-3a.5.5 0 0 0-.708 0l-3 3a.5.5 0 1 0 .708.708L7.5 5.707V11.5a.5.5 0 0 0 .5.5"/>
+                </svg>
+            </a>
+            <a href="/myBooks" style="text-decoration: none;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                     class="bi bi-arrow-down-short" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd"
+                          d="M8 4a.5.5 0 0 1 .5.5v5.793l2.146-2.147a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 1 1 .708-.708L7.5 10.293V4.5A.5.5 0 0 1 8 4"/>
+                </svg>
+            </a>
+        </div>
+        <div class="col-md-4 mb-4 d-flex justify-content-center gap-2">
+            <p>Сортировка по году написания</p>
+            <a href="/years/sort" style="text-decoration: none;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                     class="bi bi-arrow-up-short" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd"
+                          d="M8 12a.5.5 0 0 0 .5-.5V5.707l2.146 2.147a.5.5 0 0 0 .708-.708l-3-3a.5.5 0 0 0-.708 0l-3 3a.5.5 0 1 0 .708.708L7.5 5.707V11.5a.5.5 0 0 0 .5.5"/>
+                </svg>
+            </a>
+            <a href="/myBooks" style="text-decoration: none;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                     class="bi bi-arrow-down-short" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd"
+                          d="M8 4a.5.5 0 0 1 .5.5v5.793l2.146-2.147a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 1 1 .708-.708L7.5 10.293V4.5A.5.5 0 0 1 8 4"/>
+                </svg>
+            </a>
+        </div>
+        <div class="col-md-4 mb-4 d-flex justify-content-center gap-2">
+            <p>Сортировка по категории</p>
+            <a href="/category/sort" style="text-decoration: none;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                     class="bi bi-arrow-up-short" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd"
+                          d="M8 12a.5.5 0 0 0 .5-.5V5.707l2.146 2.147a.5.5 0 0 0 .708-.708l-3-3a.5.5 0 0 0-.708 0l-3 3a.5.5 0 1 0 .708.708L7.5 5.707V11.5a.5.5 0 0 0 .5.5"/>
+                </svg>
+            </a>
+            <a href="/myBooks" style="text-decoration: none;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                     class="bi bi-arrow-down-short" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd"
+                          d="M8 4a.5.5 0 0 1 .5.5v5.793l2.146-2.147a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 1 1 .708-.708L7.5 10.293V4.5A.5.5 0 0 1 8 4"/>
+                </svg>
+            </a>
+        </div>
+    </div>
+</div>
+
+    <div class="row mt-1 d-flex flex-column align-items-center">
+        <div class="col-md-6 mb-4">
+            <div class="h-100 p-5 bg-body-tertiary border rounded-3 d-flex flex-column align-items-center">
+                <p>Вы читаете авторов:</p>
+                <ul class="list-group">
+                    <li th:each="book : ${myBooksList}" class="list-group-item d-flex align-items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                             class="bi bi-bookmark-check" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd"
+                                  d="M10.854 5.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 7.793l2.646-2.647a.5.5 0 0 1 .708 0"/>
+                            <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.777.416L8 13.101l-5.223 2.815A.5.5 0 0 1 2 15.5zm2-1a1 1 0 0 0-1 1v12.566l4.723-2.482a.5.5 0 0 1 .554 0L13 14.566V2a1 1 0 0 0-1-1z"/>
+                        </svg>
+                        <span th:text="${book}" class="ms-2"></span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Список книг -->
+
+    <div class="container">
+        <div class="row mt-1 d-flex flex-column align-items-center">
+            <div th:each="el : ${books}" class="col-md-6 mb-4">
+                <div class="h-100 p-3 bg-body-tertiary border rounded-3 d-flex flex-column align-items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor"
+                         class="bi bi-book"
+                         viewBox="0 0 16 16">
+                        <path d="M1 2.828c.885-.37 2.154-.769 3.388-.893 1.33-.134 2.458.063 3.112.752v9.746c-.935-.53-2.12-.603-3.213-.493-1.18.12-2.37.461-3.287.811zm7.5-.141c.654-.689 1.782-.886 3.112-.752 1.234.124 2.503.523 3.388.893v9.923c-.918-.35-2.107-.692-3.287-.81-1.094-.111-2.278-.039-3.213.492zM8 1.783C7.015.936 5.587.81 4.287.94c-1.514.153-3.042.672-3.994 1.105A.5.5 0 0 0 0 2.5v11a.5.5 0 0 0 .707.455c.882-.4 2.303-.881 3.68-1.02 1.409-.142 2.59.087 3.223.877a.5.5 0 0 0 .78 0c.633-.79 1.814-1.019 3.222-.877 1.378.139 2.8.62 3.681 1.02A.5.5 0 0 0 16 13.5v-11a.5.5 0 0 0-.293-.455c-.952-.433-2.48-.952-3.994-1.105C10.413.809 8.985.936 8 1.783"/>
+                    </svg>
+                    <h3 th:text="${el.title}"></h3>
+                    <p><strong>Год выпуска:</strong><span th:text="${el.years} + ' г.'"></span></p>
+                    <p><strong>Автор:</strong><span th:text="${el.author}"></span></p>
+                    <p><strong>Категория:</strong><span th:text="${el.category}"></span></p>
+                    <p><strong>Описание:</strong><span th:text="${el.descriptions}"></span></p>
+                    <p><strong>Цена:</strong><span th:text="${el.price} + ' руб.'"></span></p>
+                    <select class="form-select" aria-label="Default select example" data-article-id="${article.id}">
+                        <option value="buy">Купить</option>
+                        <option value="rent2weeks">Арендовать на 2 недели</option>
+                        <option value="rent1month">Арендовать на месяц</option>
+                        <option value="rent3months">Арендовать на 3 месяца</option>
+                    </select><br>
+                    <button class="btn btn-primary" data-article-id="${article.id}">Выбрать этот пункт</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Разделитель -->
+    <div class="col-md-12 mb-4">
+        <div class="h-100 p-3 d-flex flex-column align-items-center">
+            <h3>«Бестселлеры»</h3>
+        </div>
+    </div>
+
+    <div class="row mt-1 d-flex flex-column align-items-center">
+        <div th:each="article : ${articles}" th:if="${myBooksList.contains(article.author)}" class="col-md-6 mb-4">
+            <div class="h-100 p-3 bg-body-tertiary border rounded-3 d-flex flex-column align-items-center"
+                 data-article-id="${article.id}">
+                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor"
+                     class="bi bi-list-stars" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd"
+                          d="M5 11.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5"/>
+                    <path d="M2.242 2.194a.27.27 0 0 1 .516 0l.162.53c.035.115.14.194.258.194h.551c.259 0 .37.333.164.493l-.468.363a.28.28 0 0 0-.094.3l.173.569c.078.256-.213.462-.423.3l-.417-.324a.27.27 0 0 0-.328 0l-.417.323c-.21.163-.5-.043-.423-.299l.173-.57a.28.28 0 0 0-.094-.299l-.468-.363c-.206-.16-.095-.493.164-.493h.55a.27.27 0 0 0 .259-.194zm0 4a.27.27 0 0 1 .516 0l.162.53c.035.115.14.194.258.194h.551c.259 0 .37.333.164.493l-.468.363a.28.28 0 0 0-.094.3l.173.569c.078.255-.213.462-.423.3l-.417-.324a.27.27 0 0 0-.328 0l-.417.323c-.21.163-.5-.043-.423-.299l.173-.57a.28.28 0 0 0-.094-.299l-.468-.363c-.206-.16-.095-.493.164-.493h.55a.27.27 0 0 0 .259-.194zm0 4a.27.27 0 0 1 .516 0l.162.53c.035.115.14.194.258.194h.551c.259 0 .37.333.164.493l-.468.363a.28.28 0 0 0-.094.3l.173.569c.078.255-.213.462-.423.3l-.417-.324a.27.27 0 0 0-.328 0l-.417.323c-.21.163-.5-.043-.423-.299l.173-.57a.28.28 0 0 0-.094-.299l-.468-.363c-.206-.16-.095-.493.164-.493h.55a.27.27 0 0 0 .259-.194z"/>
+                </svg>
+                <h3 th:text="${article.title}"></h3>
+                <p><strong>Год выпуска:</strong> <span th:text="${article.years}"></span></p>
+                <p><strong>Автор:</strong> <span th:text="${article.author}"></span></p>
+                <p><strong>Категория:</strong> <span th:text="${article.category}"></span></p>
+                <p><strong>Описание:</strong> <span th:text="${article.descriptions}"></span></p>
+                <p><strong>Цена:</strong> <span th:text="${article.price}"></span></p>
+                <select class="form-select" aria-label="Default select example" data-article-id="${article.id}">
+                    <option value="buy">Купить</option>
+                    <option value="rent2weeks">Арендовать на 2 недели</option>
+                    <option value="rent1month">Арендовать на месяц</option>
+                    <option value="rent3months">Арендовать на 3 месяца</option>
+                </select><br>
+                <button class="btn btn-primary" data-article-id="${article.id}">Выбрать этот пункт</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Модальное окно -->
+    <div class="modal fade" id="successModal" tabindex="-1" role="dialog" aria-labelledby="successModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="successModalLabel">Успешно!</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Оператор свяжется с вами в ближайшее время.
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const selectElements = document.querySelectorAll('.form-select');
+
+        selectElements.forEach(select => {
+            select.addEventListener('change', function() {
+                const selectedValue = this.value;
+                const articleId = this.dataset.articleId;
+
+                const actionButton = document.querySelector(`button[data-article-id="${articleId}"]`);
+
+                if (selectedValue === 'buy') {
+                    actionButton.textContent = 'Выбрать этот пункт';
+                } else if (selectedValue === 'rent2weeks' || selectedValue === 'rent1month' || selectedValue === 'rent3months') {
+                    actionButton.textContent = 'Выбрать этот пункт';
+                }
+            });
+        });
+
+        const actionButtonElements = document.querySelectorAll('button[data-article-id]');
+        actionButtonElements.forEach(button => {
+            button.addEventListener('click', function() {
+                $('#successModal').modal('show');
+            });
+        });
+    });
+    </script>
+</div>
+
+<footer class="py-2 text-center text-body-secondary">
+    <div th:insert="base/footer :: footer"></div>
+</footer>
+</body>
+</html>
